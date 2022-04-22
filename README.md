@@ -12,7 +12,11 @@ TWITCH_CLIENT_ID=[your twitch client id]
 TWITCH_CLIENT_SECRET=[your twitch client secret]
 ```
 
-Then run:
+Then run (once):
+```
+npm install
+```
+followed by
 ```
 npm run dev
 ```
