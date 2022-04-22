@@ -1,0 +1,8 @@
+/node_modules/**
+/.next/**
+/.git/**
+/build/**
+/export/**
+!.eslintrc.js
+next.config.js
+*.d.ts
