@@ -5,6 +5,8 @@
 // h3nr1p is live: live coding a notes taking app
 
 const defaultContent = {
+  user: `h3nr1p`,
+  theme: 'default',
   hello: `Hi I'm Henri, a software engineer with a focus on 
     front-end and web development. Glad to have you here.`,
   support: `Please follow me or watch me coding from time to time! 
@@ -13,6 +15,7 @@ const defaultContent = {
   title: 'Coding side hustles 💻☕🔥',
   info: 'Type !project, !today, !support or !hello if you want to know more',
   goals: [],
+  showWebCamFrame: false,
 };
 
 const content = {
@@ -20,10 +23,10 @@ const content = {
     project: `My personal website henripodolski.com (not released yet)
       using Magnolia Community Edition CMS (learning Magnolia), 
       docker and Next.js`,
-    goals: ['Content tags', 'Docker compose setup locally'],
+    goals: ['Update Magnolia to 6.2.18', 'Docker compose setup'],
     today: `
-        Add tags app and expose via REST endpoint //
-        Build tags output on website
+        Trying to fix Magnolia deps on update //
+        Docker compose local setup
       `,
   },
   markdownEditor: {

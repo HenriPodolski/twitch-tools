@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import styles from './index.module.scss';
+import defaultThemeStyles from './index.module.scss';
+import lolThemeStyles from './index.lol-theme.module.scss';
 import cx from 'classnames';
 import useSWR from 'swr';
 import { useEffect, useRef } from 'react';
@@ -22,6 +23,8 @@ const fetcher = async (
 };
 
 function HomePage(props: any) {
+  const styles =
+    twitchContent.theme === 'lol' ? lolThemeStyles : defaultThemeStyles;
   const { data, error } = useSWR(
     'http://dashboard.local:3201/api/chat',
     fetcher,
@@ -99,7 +102,7 @@ function HomePage(props: any) {
   return (
     <div className={styles.Index}>
       <header className={styles.header}>
-        <h1 className={styles.headline}>h3nr1p</h1>
+        <h1 className={styles.headline}>{twitchContent.user}</h1>
       </header>
       <main></main>
       <footer className={styles.footer}>
@@ -147,9 +150,11 @@ function HomePage(props: any) {
             </div>
           </div>
         </div>
-        <div className={styles.videoFrame}>
-          <div className={styles.loader}></div>
-        </div>
+        {twitchContent.showWebCamFrame && (
+          <div className={styles.videoFrame}>
+            <div className={styles.loader}></div>
+          </div>
+        )}
       </footer>
     </div>
   );
