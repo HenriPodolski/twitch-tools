@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import defaultThemeStyles from './index.module.scss';
 import lolThemeStyles from './index.lol-theme.module.scss';
+import nba2kThemeStyles from './index.nba2k-theme.module.scss';
 import cx from 'classnames';
 import useSWR from 'swr';
 import { useEffect, useRef } from 'react';
@@ -23,8 +24,6 @@ const fetcher = async (
 };
 
 function HomePage(props: any) {
-  const styles =
-    twitchContent.theme === 'lol' ? lolThemeStyles : defaultThemeStyles;
   const { data, error } = useSWR(
     'http://dashboard.local:3201/api/chat',
     fetcher,
@@ -32,6 +31,23 @@ function HomePage(props: any) {
   );
   const [canvasWaveAnimation] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const styles = useCallback(() => {
+    let theme = defaultThemeStyles;
+
+    switch (true) {
+      case  twitchContent.theme === 'lol': {
+        theme = lolThemeStyles;
+        break;
+      }
+      case  twitchContent.theme === 'nba2k': {
+        theme = nba2kThemeStyles;
+        break;
+      }
+    }
+
+    return theme;
+  }, [twitchContent.theme]);
 
   useEffect(() => {
     if (!canvasWaveAnimation) {
@@ -100,25 +116,25 @@ function HomePage(props: any) {
   }, [canvasRef.current, canvasWaveAnimation]);
 
   return (
-    <div className={styles.Index}>
-      <header className={styles.header}>
-        <h1 className={styles.headline}>{twitchContent.user}</h1>
+    <div className={styles().Index}>
+      <header className={styles().header}>
+        <h1 className={styles().headline}>{twitchContent.user}</h1>
       </header>
       <main></main>
-      <footer className={styles.footer}>
-        <canvas className={styles.canvas} ref={canvasRef}></canvas>
-        <div className={styles.dashboard}>
-          <div className={styles.info}>
-            <h2 className={cx(styles.headline, styles.secondLevel)}>info</h2>
-            <p className={styles.text}>{twitchContent.info}</p>
+      <footer className={styles().footer}>
+        <canvas className={styles().canvas} ref={canvasRef}></canvas>
+        <div className={styles().dashboard}>
+          <div className={styles().info}>
+            <h2 className={cx(styles().headline, styles().secondLevel)}>info</h2>
+            <p className={styles().text}>{twitchContent.info}</p>
           </div>
           <div>
             {twitchContent.goals && twitchContent.goals.length && (
               <>
-                <h2 className={cx(styles.headline, styles.secondLevel)}>
+                <h2 className={cx(styles().headline, styles().secondLevel)}>
                   goals
                 </h2>
-                <ol className={styles.text}>
+                <ol className={styles().text}>
                   {twitchContent.goals.map((goal, index) => {
                     return <li key={index}>{goal}</li>;
                   })}
@@ -126,11 +142,11 @@ function HomePage(props: any) {
               </>
             )}
           </div>
-          <div className={styles.chatWrap}>
-            <h2 className={cx(styles.headline, styles.secondLevel)}>chat</h2>
-            <div className={cx(styles.chatTableWrap)}>
+          <div className={styles().chatWrap}>
+            <h2 className={cx(styles().headline, styles().secondLevel)}>chat</h2>
+            <div className={cx(styles().chatTableWrap)}>
               {data ? (
-                <table className={cx(styles.chatTable, styles.text)}>
+                <table className={cx(styles().chatTable, styles().text)}>
                   <tbody>
                     {data.map((chatItem: Message, index: number) => {
                       return (
@@ -143,16 +159,16 @@ function HomePage(props: any) {
                   </tbody>
                 </table>
               ) : (
-                <div className={styles.empty}>
-                  <div className={cx(styles.loader, styles.aligned)}></div>
+                <div className={styles().empty}>
+                  <div className={cx(styles().loader, styles().aligned)}></div>
                 </div>
               )}
             </div>
           </div>
         </div>
         {twitchContent.showWebCamFrame && (
-          <div className={styles.videoFrame}>
-            <div className={styles.loader}></div>
+          <div className={styles().videoFrame}>
+            <div className={styles().loader}></div>
           </div>
         )}
       </footer>

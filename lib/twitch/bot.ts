@@ -7,7 +7,7 @@ const twitchContent = {
 
 const broadcastOpts = {
   identity: {
-    username: 'h3nr1p',
+    username: 'h3nr1p_bot',
     clientId: process.env.TWITCH_CLIENT_ID,
     clientSecret: process.env.TWITCH_CLIENT_SECRET,
   },
@@ -15,10 +15,10 @@ const broadcastOpts = {
 
 const opts = {
   identity: {
-    username: 'h3nr1p_bot',
+    username: 'h3nr1p',
     password: process.env.TWITCH_BOT_OAUTH_TOKEN,
   },
-  channels: ['h3nr1p'],
+  channels: ['h3nr1p_bot'],
 };
 
 // Create a client with our options
@@ -28,16 +28,17 @@ globalThis.messages = [];
 
 // Called every time a message comes in
 function onMessageHandler(target: any, context: any, msg: any, self: any) {
-  if (self) {
-    return;
-  } // Ignore messages from the bot
-
   globalThis.messages.push({
     user: context.username,
     message: msg.trim(),
   });
 
   globalThis.messages.length = Math.min(globalThis.messages.length, 50);
+  
+  if (self) {
+    return;
+  } // Ignore messages from the bot
+
 
   const commandName = msg.trim();
 

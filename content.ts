@@ -5,62 +5,39 @@
 // h3nr1p is live: live coding a notes taking app
 
 const defaultContent = {
-  user: `h3nr1p`,
+  user: `h3nr1p_bot`,
   theme: 'default',
-  hello: `Hi I'm Henri, a software engineer with a focus on 
-    front-end and web development. Glad to have you here.`,
-  support: `Please follow me or watch me coding from time to time! 
-    That helps me keep going ;)`,
-  broadcasterLanguage: 'en',
-  title: 'Coding side hustles 💻☕🔥',
-  info: 'Type !project, !today, !support or !hello if you want to know more',
+  hello: `Hi, schön das Du vorbeischaust. Ich spiele Games zum Spass und ab und an versuche ich auch etwas besser zu werden...`,
+  support: `Tipps und Tricks sind willkommen, konstruktive Kritik und Lob auch ;)`,
+  broadcasterLanguage: 'de',
+  title: 'Playing',
+  info: 'Tippe !today, !support oder !hello wenn Du mehr erfahren möchtest',
   goals: [],
   showWebCamFrame: false,
 };
 
 const content = {
-  personalWebsite: {
-    project: `My personal website henripodolski.com (not released yet)
-      using Magnolia Community Edition CMS (learning Magnolia), 
-      docker and Next.js`,
-    goals: ['Update Magnolia to 6.2.18', 'Docker compose setup'],
+  lol: {
+    theme: 'lol',
+    title: 'LoL zocken 🔥',
+    goals: ['Training um Iron hinter mir zu lassen', 'andere Champs probieren', 'auf anderen Lanes verbessern'],
     today: `
-        Trying to fix Magnolia deps on update //
-        Docker compose local setup
+        Ranked als Fill
       `,
   },
-  markdownEditor: {
-    project: `Live coding a markdown editor to be used 
-      to take notes, using React, Quill.js, isomorphic-git and ...`,
+  nba2k: {
+    theme: 'nba2k',
+    title: 'NBA2K23  zocken 🏀🔥',
+    goals: ['Unlimited/Limited besser werden', 'Vernünftiges Team aufstellen', 'Skills in Defense und Offense verbessern'],
     today: `
-            Implement form for changing the file name of 
-            new note or update name of existing (markdown file) //
-            Implement functionality for creating a 
-            new folder (directory) //
-            Implement form for changing the folder name //
-            Delete file or folder
-        `,
-    today2: `
-            Implementation of app and editor toolbars //
-            Add preview CSS
-        `,
-    today3: `
-            Make the windows resizable and the app responsive //
-        `,
-  },
-  sideProject: {
-    project: `Live coding something valuable I hope ...`,
-    today: `
-            Creating something like a dashboard or info section 
-            to cover the area beyond my wide screen capture 
-            during streams
-        `,
+        MyTeam grinding / Wurfauswahl verbessern / Moments
+      `,
   },
 };
 
 const currentContent = {
   ...defaultContent,
-  ...content.personalWebsite,
+  ...content.nba2k,
 };
 
 export default currentContent;

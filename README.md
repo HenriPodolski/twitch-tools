@@ -3,6 +3,8 @@
 Chat bot and live stream frame for 21:9 monitor view
 to be used with Twitch.
 
+https://spacejelly.dev/posts/how-to-create-a-twitch-chat-bot-with-node-js-tmi-js-heroku/
+
 ## Usage
 Rename .env.example to .env
 and fill in account data
