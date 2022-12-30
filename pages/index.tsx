@@ -129,7 +129,7 @@ function HomePage(props: any) {
             <p className={styles().text}>{twitchContent.info}</p>
           </div>
           <div>
-            {twitchContent.goals && twitchContent.goals.length && (
+            {twitchContent.goals && Boolean(twitchContent.goals.length) && (
               <>
                 <h2 className={cx(styles().headline, styles().secondLevel)}>
                   goals
