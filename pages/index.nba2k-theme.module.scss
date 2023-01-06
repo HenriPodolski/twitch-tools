@@ -33,6 +33,10 @@
   background: linear-gradient(180deg, #041F63 0%, #360379 100%);
   padding: 36px 48px 36px 500px;
 
+  &.no-cam {
+    padding: 36px 48px;
+  }
+
   &::before {
     content: "";
     position: absolute;

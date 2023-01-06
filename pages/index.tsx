@@ -9,10 +9,8 @@ import ClassicalNoise from '../lib/graphics/classical-noise';
 import { Message } from '../additional';
 
 import currentContent from '../content';
+import { GetServerSidePropsContext } from 'next';
 
-const twitchContent = {
-  ...currentContent,
-};
 
 const fetcher = async (
   input: RequestInfo,
@@ -23,7 +21,7 @@ const fetcher = async (
   return res.json();
 };
 
-function HomePage(props: any) {
+function HomePage({ twitchContent }: any) {
   const { data, error } = useSWR(
     'http://dashboard.local:3201/api/chat',
     fetcher,
@@ -121,7 +119,10 @@ function HomePage(props: any) {
         <h1 className={styles().headline}>{twitchContent.user}</h1>
       </header>
       <main></main>
-      <footer className={styles().footer}>
+      <footer className={cx(styles().footer, {
+          [styles()['no-cam']]: !twitchContent.showWebCam
+        })
+        }>
         <canvas className={styles().canvas} ref={canvasRef}></canvas>
         <div className={styles().dashboard}>
           <div className={styles().info}>
@@ -176,9 +177,19 @@ function HomePage(props: any) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ query }: GetServerSidePropsContext) {
+  const { showWebCam } = query; 
+  const twitchContent = {
+    ...currentContent,
+    showWebCam: typeof showWebCam !== undefined ? 
+      showWebCam === 'true' ? 
+        true : showWebCam === 'false' ? false : currentContent.showWebCam 
+      : currentContent.showWebCam
+  };
   return {
-    props: {},
+    props: {
+      twitchContent
+    },
   };
 }
 

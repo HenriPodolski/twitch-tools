@@ -16,6 +16,7 @@ const defaultContent = {
   title: 'Coding side hustles 💻☕🔥',
   info: 'Type !project, !today, !support or !hello if you want to know more',
   goals: [],
+  showWebCam: true,
   showWebCamFrame: false,
 };
 
@@ -28,6 +29,7 @@ const defaultContent_h3nr1p_bot = {
   title: 'Playing',
   info: 'Tippe !today, !support oder !hello wenn Du mehr erfahren möchtest',
   goals: [],
+  showWebCam: true,
   showWebCamFrame: false,
 };
 
@@ -102,14 +104,14 @@ const content_h3nr1p_bot = {
   },
   nba2k: {
     theme: 'nba2k',
-    title: 'NBA2K23  zocken 🏀🔥',
+    title: 'NBA 2K23 MyTeam grinding 🏀🔥',
     goals: [
-      'Unlimited/Limited besser werden',
-      'Vernünftiges Team aufstellen',
-      'Skills in Defense und Offense verbessern',
+      'get better in Unlimited/Limited',
+      'setup my dream team',
+      'develop better skills in defense and offense',
     ],
     today: `
-        MyTeam grinding / Wurfauswahl verbessern / Moments
+        MyTeam grinding to next / Get holiday players
       `,
   },
 };
@@ -124,4 +126,4 @@ const currentContent_h3nr1p_bot = {
   ...content_h3nr1p_bot.nba2k,
 };
 
-export default currentContent;
+export default currentContent_h3nr1p_bot;
