@@ -11,7 +11,6 @@ import { Message } from '../additional';
 import currentContent from '../content';
 import { GetServerSidePropsContext } from 'next';
 
-
 const fetcher = async (
   input: RequestInfo,
   init: RequestInit,
@@ -34,11 +33,11 @@ function HomePage({ twitchContent }: any) {
     let theme = defaultThemeStyles;
 
     switch (true) {
-      case  twitchContent.theme === 'lol': {
+      case twitchContent.theme === 'lol': {
         theme = lolThemeStyles;
         break;
       }
-      case  twitchContent.theme === 'nba2k': {
+      case twitchContent.theme === 'nba2k': {
         theme = nba2kThemeStyles;
         break;
       }
@@ -119,14 +118,17 @@ function HomePage({ twitchContent }: any) {
         <h1 className={styles().headline}>{twitchContent.user}</h1>
       </header>
       <main></main>
-      <footer className={cx(styles().footer, {
-          [styles()['no-cam']]: !twitchContent.showWebCam
-        })
-        }>
+      <footer
+        className={cx(styles().footer, {
+          [styles()['no-cam']]: !twitchContent.showWebCam,
+        })}
+      >
         <canvas className={styles().canvas} ref={canvasRef}></canvas>
         <div className={styles().dashboard}>
           <div className={styles().info}>
-            <h2 className={cx(styles().headline, styles().secondLevel)}>info</h2>
+            <h2 className={cx(styles().headline, styles().secondLevel)}>
+              info
+            </h2>
             <p className={styles().text}>{twitchContent.info}</p>
           </div>
           <div>
@@ -136,7 +138,7 @@ function HomePage({ twitchContent }: any) {
                   goals
                 </h2>
                 <ol className={styles().text}>
-                  {twitchContent.goals.map((goal, index) => {
+                  {twitchContent.goals.map((goal: string, index: number) => {
                     return <li key={index}>{goal}</li>;
                   })}
                 </ol>
@@ -144,7 +146,9 @@ function HomePage({ twitchContent }: any) {
             )}
           </div>
           <div className={styles().chatWrap}>
-            <h2 className={cx(styles().headline, styles().secondLevel)}>chat</h2>
+            <h2 className={cx(styles().headline, styles().secondLevel)}>
+              chat
+            </h2>
             <div className={cx(styles().chatTableWrap)}>
               {data ? (
                 <table className={cx(styles().chatTable, styles().text)}>
@@ -178,17 +182,21 @@ function HomePage({ twitchContent }: any) {
 }
 
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
-  const { showWebCam } = query; 
+  const { showWebCam } = query;
   const twitchContent = {
     ...currentContent,
-    showWebCam: typeof showWebCam !== undefined ? 
-      showWebCam === 'true' ? 
-        true : showWebCam === 'false' ? false : currentContent.showWebCam 
-      : currentContent.showWebCam
+    showWebCam:
+      typeof showWebCam !== undefined
+        ? showWebCam === 'true'
+          ? true
+          : showWebCam === 'false'
+          ? false
+          : currentContent.showWebCam
+        : currentContent.showWebCam,
   };
   return {
     props: {
-      twitchContent
+      twitchContent,
     },
   };
 }

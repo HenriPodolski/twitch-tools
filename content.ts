@@ -107,21 +107,21 @@ const content_h3nr1p_bot = {
     title: 'NBA 2K23 MyTeam grinding 🏀🔥',
     goals: [
       'get better in Unlimited/Limited',
-      'setup my dream team',
+      'grind to setup my dream team using any game mode in MyTeam',
       'develop better skills in defense and offense',
     ],
     today: `
-        MyTeam grinding to next / Get holiday players
+        MyTeam season 3 level 40 grinding
       `,
   },
 };
 
-const currentContent = {
+const currentContent: any = {
   ...defaultContent,
   ...content.markdownEditor,
 };
 
-const currentContent_h3nr1p_bot = {
+const currentContent_h3nr1p_bot: any = {
   ...defaultContent_h3nr1p_bot,
   ...content_h3nr1p_bot.nba2k,
 };

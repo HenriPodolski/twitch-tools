@@ -34,11 +34,10 @@ function onMessageHandler(target: any, context: any, msg: any, self: any) {
   });
 
   globalThis.messages.length = Math.min(globalThis.messages.length, 50);
-  
+
   if (self) {
     return;
   } // Ignore messages from the bot
-
 
   const commandName = msg.trim();
 
