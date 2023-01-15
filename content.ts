@@ -16,6 +16,7 @@ const defaultContent = {
   title: 'Coding side hustles 💻☕🔥',
   info: 'Type !project, !today, !support or !hello if you want to know more',
   goals: [],
+  additionalHeaderElement: '</>',
   showWebCam: true,
   showWebCamFrame: false,
 };
@@ -47,14 +48,9 @@ const content = {
   markdownEditor: {
     project: `Live coding a markdown editor to be used 
       to take notes, using React, Quill.js, isomorphic-git and ...`,
-    goals: [
-      'Get back into the project after long time',
-      'Finish something that I can actually use asap',
-      'Polish UI',
-    ],
+    goals: ['Finish something that I can actually use asap', 'Polish UI'],
     today: `
-            Get used to the code again after a long time of not touching it //
-            Get rid of Redux in favor of something that is easier to use
+            Get rid of Redux in favor of Recoil.js, that is easier to use for me
         `,
     today2: `
             Implement form for changing the file name of 
@@ -73,12 +69,16 @@ const content = {
         `,
   },
   sideProject: {
-    project: `Live coding something valuable I hope ...`,
+    project: `Live coding something valuable ...`,
     today: `
-            Creating something like a dashboard or info section 
-            to cover the area beyond my wide screen capture 
-            during streams
+            Set up build task, Building webcomponent code, test
         `,
+    goals: [
+      'build a vanilla webcomponent containing a React component',
+      'served and build by Next.js and Webpack',
+      'expose via Next.js to be integrated as a widget',
+    ],
+    disableChat: true,
   },
   uccArea: {
     project: `Coding a web component for embedding user created content ...`,
@@ -118,7 +118,7 @@ const content_h3nr1p_bot = {
 
 const currentContent: any = {
   ...defaultContent,
-  ...content.markdownEditor,
+  ...content.sideProject,
 };
 
 const currentContent_h3nr1p_bot: any = {
@@ -126,4 +126,4 @@ const currentContent_h3nr1p_bot: any = {
   ...content_h3nr1p_bot.nba2k,
 };
 
-export default currentContent_h3nr1p_bot;
+export default currentContent;

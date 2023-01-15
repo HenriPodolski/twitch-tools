@@ -26,7 +26,7 @@ function HomePage({ twitchContent }: any) {
     fetcher,
     { refreshInterval: 500 }
   );
-  const [canvasWaveAnimation] = useState(false);
+  const [canvasWaveAnimation] = useState(true);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const styles = useCallback(() => {
@@ -56,7 +56,7 @@ function HomePage({ twitchContent }: any) {
         ctx = canvas.getContext('2d') as CanvasRenderingContext2D,
         perlin = new (ClassicalNoise as any)(),
         variation = 0.0025,
-        amp = 300,
+        amp = 700,
         variators: any[] = [],
         max_lines =
           navigator.userAgent.toLowerCase().indexOf('firefox') > -1 ? 25 : 40;
@@ -116,6 +116,11 @@ function HomePage({ twitchContent }: any) {
     <div className={styles().Index}>
       <header className={styles().header}>
         <h1 className={styles().headline}>{twitchContent.user}</h1>
+        {twitchContent.additionalHeaderElement && (
+          <div className={styles().additionalHeaderElement}>
+            {twitchContent.additionalHeaderElement}
+          </div>
+        )}
       </header>
       <main></main>
       <footer
@@ -146,9 +151,11 @@ function HomePage({ twitchContent }: any) {
             )}
           </div>
           <div className={styles().chatWrap}>
-            <h2 className={cx(styles().headline, styles().secondLevel)}>
-              chat
-            </h2>
+            {data?.length > 0 && (
+              <h2 className={cx(styles().headline, styles().secondLevel)}>
+                chat
+              </h2>
+            )}
             <div className={cx(styles().chatTableWrap)}>
               {data ? (
                 <table className={cx(styles().chatTable, styles().text)}>

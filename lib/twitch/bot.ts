@@ -7,7 +7,7 @@ const twitchContent = {
 
 const broadcastOpts = {
   identity: {
-    username: 'h3nr1p_bot',
+    username: process.env.BROADCAST_CHANNEL as string,
     clientId: process.env.TWITCH_CLIENT_ID,
     clientSecret: process.env.TWITCH_CLIENT_SECRET,
   },
@@ -15,10 +15,10 @@ const broadcastOpts = {
 
 const opts = {
   identity: {
-    username: 'h3nr1p',
+    username: process.env.CHANNEL_BOT as string,
     password: process.env.TWITCH_BOT_OAUTH_TOKEN,
   },
-  channels: ['h3nr1p_bot'],
+  channels: [process.env.BROADCAST_CHANNEL as string],
 };
 
 // Create a client with our options
