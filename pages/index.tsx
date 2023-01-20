@@ -10,6 +10,7 @@ import { Message } from '../additional';
 
 import currentContent from '../content';
 import { GetServerSidePropsContext } from 'next';
+import GoliveBot from '../lib/twitch/golive-bot';
 
 const fetcher = async (
   input: RequestInfo,
@@ -157,7 +158,7 @@ function HomePage({ twitchContent }: any) {
               </h2>
             )}
             <div className={cx(styles().chatTableWrap)}>
-              {data ? (
+              {data && !twitchContent.disableChat ? (
                 <table className={cx(styles().chatTable, styles().text)}>
                   <tbody>
                     {data.map((chatItem: Message, index: number) => {
@@ -190,6 +191,7 @@ function HomePage({ twitchContent }: any) {
 
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   const { showWebCam } = query;
+  GoliveBot({ user: process.env.BROADCAST_CHANNEL as string });
   const twitchContent = {
     ...currentContent,
     showWebCam:

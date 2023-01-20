@@ -69,7 +69,7 @@ const content = {
         `,
   },
   sideProject: {
-    project: `Live coding something valuable ...`,
+    project: `Working on to be done items ...`,
     today: `
             Set up build task, Building webcomponent code, test
         `,
