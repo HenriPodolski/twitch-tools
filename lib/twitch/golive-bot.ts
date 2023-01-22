@@ -213,7 +213,11 @@ const requestTwitchStreams = async ({ user }: { user: string }) => {
 const GoliveBot = async ({ user }: { user: string }) => {
   const retryUntilLive = setInterval(async () => {
     const liveEntry = await requestTwitchStreams({ user });
-    console.log('retryUntilLive', new Date().toLocaleTimeString());
+    console.log(
+      'retryUntilLive',
+      new Date().toLocaleDateString(),
+      new Date().toLocaleTimeString()
+    );
     if (liveEntry?.id) {
       clearInterval(retryUntilLive);
       const { user_name, title } = liveEntry;
@@ -222,7 +226,7 @@ const GoliveBot = async ({ user }: { user: string }) => {
       }`;
       await authorizeAndTweet(tweetText);
     }
-  }, 10000);
+  }, 30000);
 };
 
 export default GoliveBot;
