@@ -215,7 +215,7 @@ const GoliveBot = async ({ user }: { user: string }) => {
 
   if (liveEntry?.id) {
     const { user_name, title } = liveEntry;
-    const tweetText = `🔴 I'm live coding on https://twitch.tv/${user_name} now!: ${
+    const tweetText = `🔴 I'm live coding on https://twitch.tv/${user_name} now: ${
       title.length >= 75 ? `${title.substring(0, 75)}...` : title
     }`;
     await authorizeAndTweet(tweetText);
