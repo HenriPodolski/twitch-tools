@@ -10,6 +10,7 @@ import { Message } from '../additional';
 
 import currentContent from '../content';
 import { GetServerSidePropsContext } from 'next';
+import GoliveBot from '../lib/twitch/golive-bot';
 
 const fetcher = async (
   input: RequestInfo,
@@ -26,7 +27,7 @@ function HomePage({ twitchContent }: any) {
     fetcher,
     { refreshInterval: 500 }
   );
-  const [canvasWaveAnimation] = useState(false);
+  const [canvasWaveAnimation] = useState(true);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const styles = useCallback(() => {
@@ -56,7 +57,7 @@ function HomePage({ twitchContent }: any) {
         ctx = canvas.getContext('2d') as CanvasRenderingContext2D,
         perlin = new (ClassicalNoise as any)(),
         variation = 0.0025,
-        amp = 300,
+        amp = 700,
         variators: any[] = [],
         max_lines =
           navigator.userAgent.toLowerCase().indexOf('firefox') > -1 ? 25 : 40;
@@ -120,6 +121,11 @@ function HomePage({ twitchContent }: any) {
         })}
       >
         <h1 className={styles().headline}>{twitchContent.user}</h1>
+        {twitchContent.additionalHeaderElement && (
+          <div className={styles().additionalHeaderElement}>
+            {twitchContent.additionalHeaderElement}
+          </div>
+        )}
       </header>
       <main></main>
       <footer
@@ -150,11 +156,13 @@ function HomePage({ twitchContent }: any) {
             )}
           </div>
           <div className={styles().chatWrap}>
-            <h2 className={cx(styles().headline, styles().secondLevel)}>
-              chat
-            </h2>
+            {data?.length > 0 && (
+              <h2 className={cx(styles().headline, styles().secondLevel)}>
+                chat
+              </h2>
+            )}
             <div className={cx(styles().chatTableWrap)}>
-              {data ? (
+              {data && !twitchContent.disableChat ? (
                 <table className={cx(styles().chatTable, styles().text)}>
                   <tbody>
                     {data.map((chatItem: Message, index: number) => {
@@ -187,6 +195,7 @@ function HomePage({ twitchContent }: any) {
 
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   const { showWebCam } = query;
+  GoliveBot({ user: process.env.BROADCAST_CHANNEL as string });
   const twitchContent = {
     ...currentContent,
     showWebCam:
