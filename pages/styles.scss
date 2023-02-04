@@ -4,6 +4,8 @@ html, body {
   font-family: Georgia, 'Franklin Gothic Medium', Times, serif;
   color: #b1b3b7;
   height: 100%;
+  max-height: 100vh;
+  overflow: hidden;
 
   & > div {
     height: 100%;

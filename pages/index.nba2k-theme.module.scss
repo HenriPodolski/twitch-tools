@@ -26,12 +26,22 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
+
+  &.no-cam {
+    &::after {
+      top: auto;
+      bottom: -60px;
+      right: 36px;
+      height: 250px;
+      width: 340px;
+    }
+  }
 }
 
 .footer {
   position: relative;
   background: linear-gradient(180deg, #041F63 0%, #360379 100%);
-  padding: 36px 48px 36px 500px;
+  padding: 36px 460px 36px 48px;
 
   &.no-cam {
     padding: 36px 48px;

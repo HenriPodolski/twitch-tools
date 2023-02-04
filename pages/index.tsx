@@ -114,7 +114,11 @@ function HomePage({ twitchContent }: any) {
 
   return (
     <div className={styles().Index}>
-      <header className={styles().header}>
+      <header
+        className={cx(styles().header, {
+          [styles()['no-cam']]: !twitchContent.showWebCam,
+        })}
+      >
         <h1 className={styles().headline}>{twitchContent.user}</h1>
       </header>
       <main></main>

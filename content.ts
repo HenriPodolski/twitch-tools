@@ -2,6 +2,9 @@
 // Side hustles 💻☕🔥 - implementing a notes taking app - Type !project, !today, !hello or !support for more info
 // Side hustles 💻☕🔥 - implementing component that allows users to create content in place - Type !project, !today for more info
 
+// NBA2K23 MyTeam season 4 - path to Zach / locker code available 🏀🔥
+// NBA2K23 MyCareer 3&D Wing 🏀🔥
+
 // h3nr1p is live: Make rehydration work again after upgrade Magnolia SPA renderer / live coding personal website
 // h3nr1p is live: live coding a notes taking app
 // h3nrip is live: coding a user created content component
@@ -29,7 +32,7 @@ const defaultContent_h3nr1p_bot = {
   title: 'Playing',
   info: 'Tippe !today, !support oder !hello wenn Du mehr erfahren möchtest',
   goals: [],
-  showWebCam: true,
+  showWebCam: false,
   showWebCamFrame: false,
 };
 
@@ -102,7 +105,7 @@ const content_h3nr1p_bot = {
         Ranked als Fill
       `,
   },
-  nba2k: {
+  nba2kMyTeam: {
     theme: 'nba2k',
     title: 'NBA 2K23 MyTeam grinding 🏀🔥',
     goals: [
@@ -111,7 +114,18 @@ const content_h3nr1p_bot = {
       'develop better skills in defense and offense',
     ],
     today: `
-        MyTeam season 3 level 40 grinding
+        MyTeam season 4 - path to Zach
+      `,
+  },
+  nba2kMyCareer: {
+    theme: 'nba2k',
+    title: 'NBA 2K23 MyCareer multiplayer for fun 🏀🔥',
+    goals: [
+      '3&D Wing - path to 99 ovr',
+      'VC grinding',
+    ],
+    today: `
+      MyCareer The Rec, probably Deuces or Trips
       `,
   },
 };
@@ -123,7 +137,7 @@ const currentContent: any = {
 
 const currentContent_h3nr1p_bot: any = {
   ...defaultContent_h3nr1p_bot,
-  ...content_h3nr1p_bot.nba2k,
+  ...content_h3nr1p_bot.nba2kMyTeam,
 };
 
 export default currentContent_h3nr1p_bot;
