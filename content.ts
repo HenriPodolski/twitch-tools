@@ -110,13 +110,14 @@ const content_h3nr1p_bot = {
   nba2kMyTeam: {
     theme: 'nba2k',
     title: 'NBA 2K23 MyTeam grinding 🏀🔥',
+    info: 'Type !today (replies with locker codes sometimes 😉), !support or !hello if you want to know more!',
     goals: [
       'get better in Unlimited/Limited',
       'grind to setup my dream team using any game mode in MyTeam',
-      'Locker code: ASK-A-DEV-LOCKER-CODE',
+      'develop better skills in defense and offense',
     ],
     today: `
-        MyTeam season 4 - path to Zach
+        MyTeam season 4 - path to Zach / Locker code: ASK-A-DEV-LOCKER-CODE
       `,
   },
   nba2kMyCareer: {
