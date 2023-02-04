@@ -195,7 +195,6 @@ function HomePage({ twitchContent }: any) {
 
 export async function getServerSideProps({ query }: GetServerSidePropsContext) {
   const { showWebCam } = query;
-  GoliveBot({ user: process.env.BROADCAST_CHANNEL as string });
   const twitchContent = {
     ...currentContent,
     showWebCam:
@@ -207,6 +206,11 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
           : currentContent.showWebCam
         : currentContent.showWebCam,
   };
+
+  if (twitchContent.twitterBot) {
+    GoliveBot({ user: process.env.BROADCAST_CHANNEL as string });
+  }  
+
   return {
     props: {
       twitchContent,

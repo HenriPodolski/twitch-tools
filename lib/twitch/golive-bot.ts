@@ -1,5 +1,4 @@
 import fetch, { HeadersInit } from 'node-fetch';
-import { Client } from 'twitter-api-sdk';
 import got from 'got';
 import crypto from 'crypto';
 import OAuth from 'oauth-1.0a';

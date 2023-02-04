@@ -1,7 +1,7 @@
 # Twitch Tools
-
+My (hacky) collection of tools to setup and automate my Twitch live streaming environment.
 Chat bot and live stream frame for 21:9 monitor view
-to be used with Twitch.
+to be used with Twitch. Plus: Twitch go live tweet on Twitter.
 
 https://spacejelly.dev/posts/how-to-create-a-twitch-chat-bot-with-node-js-tmi-js-heroku/
 

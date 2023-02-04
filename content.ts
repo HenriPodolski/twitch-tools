@@ -22,24 +22,26 @@ const defaultContent = {
   additionalHeaderElement: '</>',
   showWebCam: true,
   showWebCamFrame: false,
+  twitterBot: true,
 };
 
 const defaultContent_h3nr1p_bot = {
   user: `h3nr1p_bot`,
   theme: 'default',
-  hello: `Hi, schön das Du vorbeischaust. Ich spiele Games zum Spass und ab und an versuche ich auch etwas besser zu werden...`,
-  support: `Tipps und Tricks sind willkommen, konstruktive Kritik und Lob auch ;)`,
-  broadcasterLanguage: 'de',
+  hello: `Hi, I'm Henri. Glad to have you here.`,
+  support: `Tips and tricks welcome, constructive critisim as well. ;)`,
+  broadcasterLanguage: 'en',
   title: 'Playing',
-  info: 'Tippe !today, !support oder !hello wenn Du mehr erfahren möchtest',
+  info: 'Type !today, !support or !hello if you want to know more!',
   goals: [],
   showWebCam: false,
   showWebCamFrame: false,
+  twitterBot: false,
 };
 
 const content = {
   personalWebsite: {
-    project: `My personal website henripodolski.com (not released yet)
+    project: `My personal website henripodolski.com
       using Magnolia Community Edition CMS (learning Magnolia), 
       docker and Next.js`,
     goals: ['Update Magnolia to 6.2.18', 'Docker compose setup'],
@@ -140,4 +142,4 @@ const currentContent_h3nr1p_bot: any = {
   ...content_h3nr1p_bot.nba2kMyTeam,
 };
 
-export default currentContent;
+export default currentContent_h3nr1p_bot;
