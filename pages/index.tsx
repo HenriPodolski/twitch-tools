@@ -209,7 +209,7 @@ export async function getServerSideProps({ query }: GetServerSidePropsContext) {
 
   if (twitchContent.twitterBot) {
     GoliveBot({ user: process.env.BROADCAST_CHANNEL as string });
-  }  
+  }
 
   return {
     props: {
