@@ -113,7 +113,7 @@ const content_h3nr1p_bot = {
     goals: [
       'get better in Unlimited/Limited',
       'grind to setup my dream team using any game mode in MyTeam',
-      'develop better skills in defense and offense',
+      'Locker code: ASK-A-DEV-LOCKER-CODE',
     ],
     today: `
         MyTeam season 4 - path to Zach
