@@ -94,8 +94,6 @@ async function modifyChannelInfo() {
 
   const authRes = await authenticate(['channel:manage:broadcast']);
 
-  console.log('authRes', authRes);
-
   const res = await fetch(
     `https://api.twitch.tv/helix/channels?broadcaster_id=${clientId}`,
     {
@@ -111,8 +109,6 @@ async function modifyChannelInfo() {
   );
   const resJson = await res.json();
 
-  console.log(resJson);
-
   return updateInfos;
 }
 
@@ -120,5 +116,9 @@ async function modifyChannelInfo() {
 client.on('message', onMessageHandler);
 client.on('connected', onConnectedHandler);
 
-// Connect to Twitch:
-client.connect();
+const makeConnection = async () => {
+  // Connect to Twitch:
+  const res = await client.connect();
+};
+
+makeConnection();
